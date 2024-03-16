@@ -1,17 +1,8 @@
-content = File.read("01.txt")
-
 floor = 0
-character = 0
-
-content.each_char do |c|
-  character += 1
-  if c == '('
-    floor += 1
-  elsif c == ')'
-    floor -= 1
-  end
+File.read("01.txt").each_char.each_with_index do |c, i|
+  c == '(' ? (floor += 1) : (floor -= 1)
   if floor == -1
-    puts "Basement at character #{character}"
+    puts "#{(i+1)}"
     break
   end
 end

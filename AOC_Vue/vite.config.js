@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/Advent-Of-Code/AOC_Vue/',
+  base: '/AOC_Vue/',
   plugins: [
     vue(),
   ],

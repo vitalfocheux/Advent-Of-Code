@@ -34,12 +34,12 @@ Etape pour deployer le site
 
 npm run build
 
-git add AOC_Vue/dist -f
+git add dist -f
 git commit -m "message"
 git checkout main
 git pull origin main
 git fetch origin gh-pages
-git subtree split --prefix AOC_Vue/dist -b gh-pages-split
+git subtree split --prefix dist -b gh-pages-split
 git push origin gh-pages-split:gh-pages --force
 git checkout main
 git branch -D gh-pages-split

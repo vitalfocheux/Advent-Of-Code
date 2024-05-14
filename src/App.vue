@@ -14,6 +14,9 @@ import TheWelcome from './components/TheWelcome.vue'
 
   <main>
     <TheWelcome />
+    <router-link to="/d01">
+      <button>Go to D01</button>
+    </router-link>
   </main>
 </template>
 

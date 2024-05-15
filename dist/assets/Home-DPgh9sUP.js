@@ -1,1 +1,0 @@
-import{_ as o,c as r,u as n,o as s}from"./index-Bd0EFl3f.js";const u={setup(){return{router:n()}}};function a(e,t,c,p,f,m){return s(),r("button",{onClick:t[0]||(t[0]=_=>e.$router.push({name:"2015"}))},"2015")}const i=o(u,[["render",a]]);export{i as default};

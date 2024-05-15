@@ -1,5 +1,12 @@
+<script setup>
+    import AboutHome from '../components/AboutHome.vue'
+    import Navbar from '../components/Navbar.vue'
+</script>
+
 <template>
-    <button @click="$router.push({name: '2015'})">2015</button>
+    <Navbar />
+
+    <AboutHome />
 </template>
 
 <script>

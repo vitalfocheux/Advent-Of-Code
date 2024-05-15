@@ -1,6 +1,6 @@
 @import './base.css';
 
-#app {
+/* #app {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -32,4 +32,49 @@ a,
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   }
+
+  
+} */
+
+:root{
+  --green: #4CAF50
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background-color: var(--green);
+  overflow: auto;
+}
+
+nav a {
+  float: 1 0 auto;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+nav button {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: var(--green);
+  border: none;
+  cursor: pointer;
+}
+
+nav button:hover {
+  background-color: #45a049;
 }

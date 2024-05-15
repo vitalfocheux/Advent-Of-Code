@@ -4,21 +4,31 @@ import TheWelcome from './components/TheWelcome.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <!-- <header>
+      <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+      <div class="wrapper">
+        <HelloWorld msg="You did it!" />
+      </div>
+    </header>
 
-  <main>
-    <TheWelcome />
-    <router-link to="/d01">
-      <button>Go to D01</button>
-    </router-link>
-  </main>
+    <main>
+      <TheWelcome />
+      <button @click="$router.push({name: 'd01'}); console.log('Méthode push exécutée');">Go to d01</button>
+    </main> -->
+    <router-view/>
 </template>
+
+<script>
+  import { useRouter } from 'vue-router'
+
+  export default {
+    setup() {
+      const router = useRouter()
+      return { router }
+    }
+  }
+</script>
 
 <style scoped>
 header {

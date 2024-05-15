@@ -1,0 +1,1 @@
+import{_ as t,o as s,c as a,t as r}from"./index-D-JvWIVU.js";const c={class:"HeaderAI"},o={name:"HeaderAI"},_=Object.assign(o,{props:{msg:{type:String,required:!0}},setup(e){return(n,d)=>(s(),a("div",c,r(e.msg),1))}}),i=t(_,[["__scopeId","data-v-2d074dd4"]]);export{i as H};

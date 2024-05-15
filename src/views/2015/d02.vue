@@ -1,12 +1,13 @@
 <script setup>
   import Navbar from '@/components/Navbar.vue';
   import HeaderAI from '@/components/HeaderAI.vue';
+  const messages = ["Un essai pour résoudre le jour 2 de l'Advent of Code 2015 avec Github Copilot"]
 </script>
 
 <template>
     <Navbar />
 
-    <HeaderAI msg="Un essai pour résoudre le jour 2 de l'Advent of Code 2015 avec Github Copilot" />
+    <HeaderAI :msg="messages" />
 
     <main>
         <h1>Day 2 - I Was Told There Wold Be No Match</h1>

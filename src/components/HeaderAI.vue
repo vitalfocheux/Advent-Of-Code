@@ -2,7 +2,7 @@
     
     defineProps({
         msg: {
-            type: String,
+            type: Array,
             required: true
         }
     })
@@ -11,7 +11,9 @@
 
 <template>
     <div class="HeaderAI">
-        {{ msg }}
+        <div v-for="(message, index) in msg" :key="index">
+            {{ message }}
+        </div>
     </div>
   </template>
   
@@ -27,7 +29,9 @@
     border-radius: 10px;
     background-color: lightgray;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 </style>

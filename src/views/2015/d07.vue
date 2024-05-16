@@ -2,7 +2,8 @@
   import Navbar from '@/components/Navbar.vue';
   import HeaderAI from '@/components/HeaderAI.vue';
 
-  const messages = [""]
+  const messages = ["Deux essais pour la partie 1 avec Github Copilot, il n'avais pas réussi a bien optimisé",
+                    "Un essai pour la partie 2 avec Github Copilot"]
 </script>
 
 <template>
@@ -51,12 +52,15 @@
             In little Bobby's kit's instructions booklet (provided as your puzzle input), what signal is ultimately provided to wire a?
         </p>
         <textarea v-model="instructions" placeholder="Enter instructions here, one per line"></textarea>
-        <button @click="executeInstructions">Execute Instructions</button>
-        <p>Value of wire a: <span v-if="Object.keys(wires).length !== 0">{{ wires.a }}</span></p>
+        <button @click="calculateSignal()">Calculate Signal</button>
+        <p>Signal on wire a: <span v-if="signal !== null">{{ signal }}</span></p>
         <h2>Part two</h2>
         <p>
             Now, take the signal you got on wire a, override wire b to that signal, and reset the other wires (including wire a). What new signal is ultimately provided to wire a?
         </p>
+        <textarea v-model="instructions" placeholder="Enter instructions here, one per line"></textarea>
+        <button @click="calculateSignal(true)">Calculate Signal for Part 2</button>
+        <p>Signal on wire a: <span v-if="signal !== null"> {{ signal2 }}</span></p>
     </main>
 
 </template>
@@ -69,7 +73,8 @@
         data() {
             return {
                 instructions: '',
-                wires: {}
+                signal: null,
+                signal2: null
             };
         },
 
@@ -80,28 +85,43 @@
         },
 
         methods: {
-            executeInstructions() {
+            calculateSignal(resetB=false) {
                 const instructionsArray = this.instructions.split('\n');
-                instructionsArray.forEach(instruction => {
-                    const [output, operation, input1, input2] = instruction.match(/(.*) -> (.*)/).slice(1);
-                    this.wires[output] = this.performOperation(operation, input1, input2);
-                });
-            },
-            performOperation(operation, input1, input2) {
-                switch (operation) {
-                    case 'AND':
-                    return this.wires[input1] & this.wires[input2];
-                    case 'OR':
-                    return this.wires[input1] | this.wires[input2];
-                    case 'LSHIFT':
-                    return this.wires[input1] << input2;
-                    case 'RSHIFT':
-                    return this.wires[input1] >> input2;
-                    case 'NOT':
-                    return ~this.wires[input1];
-                    default:
-                    return Number(input1);
+                const wires = {};
+                const instructions = {};
+
+                // Transform the array of instructions into an object
+                for (let instruction of instructionsArray) {
+                    const [left, right] = instruction.split(' -> ');
+                    instructions[right] = left;
                 }
+
+                if (resetB) {
+                    instructions['b'] = String(this.signal);
+                }
+
+                // Use a helper function to calculate the signal for a wire
+                const getSignal = (wire) => {
+                    if (wires[wire] !== undefined) return wires[wire];
+                    if (!isNaN(wire)) return Number(wire);
+                    const instruction = instructions[wire];
+                    wires[wire] = this.executeInstruction(instruction, wires, getSignal);
+                    return wires[wire];
+                };
+
+                resetB ? this.signal2 = getSignal('a') : this.signal = getSignal('a');
+            },
+            executeInstruction(instruction, wires, getSignal) {
+                if (/^\d+$/.test(instruction)) return Number(instruction);
+                if (wires[instruction]) return wires[instruction];
+                const parts = instruction.split(' ');
+                if (parts.length === 1) return getSignal(parts[0]);
+                if (parts[1] === 'AND') return getSignal(parts[0]) & getSignal(parts[2]);
+                if (parts[1] === 'OR') return getSignal(parts[0]) | getSignal(parts[2]);
+                if (parts[1] === 'LSHIFT') return getSignal(parts[0]) << getSignal(parts[2]);
+                if (parts[1] === 'RSHIFT') return getSignal(parts[0]) >> getSignal(parts[2]);
+                if (parts[0] === 'NOT') return ~getSignal(parts[1]) & 0xffff;
+                return false;
             }
         }
     }

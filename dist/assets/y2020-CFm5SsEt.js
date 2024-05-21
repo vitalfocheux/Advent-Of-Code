@@ -1,0 +1,1 @@
+import{B as r}from"./ButtonDay-CtuuBV4K.js";import{N as a}from"./Navbar-BPawfkg-.js";import{o,c as s,b as e,F as n,u}from"./index-bEcdERby.js";const c={setup(){return{router:u()}}},i=Object.assign(c,{__name:"y2020",setup(t){return(_,m)=>(o(),s(n,null,[e(a),e(r,{year:"2020"})],64))}});export{i as default};

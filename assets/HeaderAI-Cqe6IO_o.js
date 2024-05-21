@@ -1,0 +1,1 @@
+import{_ as c,o as e,c as r,F as n,r as o,t as _}from"./index-bEcdERby.js";const d={class:"HeaderAI"},i={name:"HeaderAI"},p=Object.assign(i,{props:{msg:{type:Array,required:!0}},setup(t){return(u,l)=>(e(),r("div",d,[(e(!0),r(n,null,o(t.msg,(s,a)=>(e(),r("div",{key:a},_(s),1))),128))]))}}),g=c(p,[["__scopeId","data-v-1a3b7859"]]);export{g as H};

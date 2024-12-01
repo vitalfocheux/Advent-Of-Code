@@ -21,9 +21,9 @@ int part1(String input) {
 
 
   while(left.isNotEmpty){
-    int l = left.reduce((value, element) => value < element ? value : element);
+    int l = left.reduce(min);
     left.remove(l);
-    int r = right.reduce((value, element) => value < element ? value : element);
+    int r = right.reduce(min);
     right.remove(r);
     result += (l - r).abs();
   }

@@ -1,4 +1,4 @@
-import '../../packages/models.dart';
+import '../../packages/AOCD/models.dart';
 
 void main() async {
   AOCD aocd = await AOCD.create(2015, 10);

@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "aoc-vue": "file:",
     "collections": "^5.1.13",
     "crypto": "^1.0.1",
     "deque": "^0.0.4",

@@ -1,7 +1,7 @@
 extension BasicParsing on String {
 
   int toInt(){
-    return double.parse(this).toInt();
+    return int.parse(this).toInt();
   }
 
   double toDouble(){

@@ -20,7 +20,6 @@ parseInput(String input){
 }
 
 part1(String input){
-  num res = 0;
   List<List<int>> grid = parseInput(input);
   Set<(int, int)> starts = {};
   for(int i = 0; i < grid.length; i++){
